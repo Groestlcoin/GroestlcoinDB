@@ -4,10 +4,10 @@ import json
 def getNewData():
 
     # create variables
-    [name, usdPrice, brlPrice, percentChange7d, percentChange24h, percentChange1h,lastUpdated] = [None, None, None, None, None, None, None]
+    [name, usdPrice, eurPrice, percentChange7d, percentChange24h, percentChange1h,lastUpdated] = [None, None, None, None, None, None, None]
 
     # request data
-    actualInfo = subprocess.getoutput("curl -s https://api.coinmarketcap.com/v1/ticker/bitcoin/?convert=BRL")
+    actualInfo = subprocess.getoutput("curl -s https://api.coinmarketcap.com/v1/ticker/groestlcoin/?convert=EUR")
 
     jdata = json.loads(actualInfo) # convert to json
 
@@ -20,8 +20,8 @@ def getNewData():
             elif(key == "price_usd"):
                 usdPrice = value
 
-            elif(key == "price_brl"):
-                brlPrice = value
+            elif(key == "price_eur"):
+                eurPrice = value
 
             elif(key == "percent_change_7d"):
                 percentChange7d = value
@@ -36,4 +36,4 @@ def getNewData():
                 lastUpdated = value
 
 
-    return [name, usdPrice, brlPrice, percentChange7d, percentChange24h, percentChange1h,lastUpdated]
+    return [name, usdPrice, eurPrice, percentChange7d, percentChange24h, percentChange1h,lastUpdated]

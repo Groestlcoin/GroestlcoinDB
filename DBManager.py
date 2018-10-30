@@ -12,12 +12,12 @@ def getDB(): # connect to mongodb
 
 def addEntry(db): # add new data
     # request data
-    [name, usdPrice, brlPrice, percentChange7d, percentChange24h, percentChange1h,lastUpdated] = Scraper.getNewData()
+    [name, usdPrice, eurPrice, percentChange7d, percentChange24h, percentChange1h,lastUpdated] = Scraper.getNewData()
 
     # insert on DB
     db.test.insert({"name" : name,
                     "usdPrice" : usdPrice,
-                    "brlPrice" : brlPrice,
+                    "eurPrice" : eurPrice,
                     "percentChange7d" : percentChange7d,
                     "percentChange24h" : percentChange24h,
                     "percentChange1h" : percentChange1h,
